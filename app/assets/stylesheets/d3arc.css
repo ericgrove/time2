@@ -1,0 +1,217 @@
+body {
+	background: #222;
+}
+
+input {
+	border: 0px;
+	background: transparent;
+	text-align: center;
+	color: black;
+}
+
+input:hover {
+	color: #292;
+}
+
+div {
+	text-align: center;
+    margin: 13px auto 13px;
+	border-radius: 3px;
+	border: none;
+	background: #eeeeee;
+}
+
+div#eventype {
+	background: transparent;
+}
+
+div#eventname {
+	width: 150px;
+}
+
+input#event_name {
+	width: 100%;
+	height: 20px;
+}
+
+#formCircle {
+	stroke: #fff;
+	stroke-width: 2px;
+	stroke-opacity: 0.3;
+}
+
+#hArcy {
+	stroke: #333;
+	stroke-width: 5px;
+	stroke-opacity: 0.5;
+	opacity: 1;
+}
+
+#hStartSliderArcy {
+	stroke: #333;
+	stroke-width: 2px;
+	stroke-opacity: 0.9;
+	fill-opacity: 0.6;
+}
+
+#hEndSliderArcy {
+	stroke: #333;
+	stroke-width: 2px;
+	stroke-opacity: 0.9;
+	fill-opacity: 0.6;
+}
+
+#mArcy {
+	stroke: #333;
+	stroke-width: 1px;
+	stroke-opacity: 0.5;
+	opacity: 1;
+}
+
+#mStartSliderArcy {
+	stroke: #333;
+	stroke-width: 2px;
+	stroke-opacity: 0.9;
+	fill-opacity: 0.6;
+}
+
+#mEndSliderArcy {
+	stroke: #333;
+	stroke-width: 2px;
+	stroke-opacity: 0.9;
+	fill-opacity: 0.6;
+}
+
+.formHourNums {
+	font: 20px sans-serif;
+	fill: #111;
+	pointer-events: none;
+	text-anchor: middle;
+}
+
+.formMinuteNums {
+	font: 10px sans-serif;
+	fill: #111;
+	pointer-events: none;
+	text-anchor: middle;
+}
+
+#dateDisplay {
+	fill: yellow;
+	font: 20px sans-serif;
+	text-anchor: middle;
+}
+
+/* start color */
+#startHNums, #startMNums, #hStartSliderArcy, #mStartSliderArcy {
+	fill: #3ff;
+}
+
+/* end color */
+#mSliderArcy, #endMNums, #hSliderArcy, #endHNums, #hEndSliderArcy, #mEndSliderArcy {
+	fill: #7f7;
+}
+
+/* duration color */
+#durHNums, #durMNums, #hArcy, #mArcy {
+	fill: orange;
+	font: sans-serif;
+	
+}
+#startHNums, #endHNums, #startMNums, #endMNums, #durHNums, #durMNums {
+	font: 20px sans-serif;
+}
+#middy {
+	opacity: 0.5;
+}
+
+.winterMonths {
+	fill: #09c;
+}
+
+.springMonths {
+	fill: #090;
+}
+
+.fallMonths {
+	fill: #f93;
+}
+
+.summerMonths {
+	fill: #c30;
+}
+
+.winterMonths, .springMonths, .summerMonths, .fallMonths {
+	opacity: 0.7;
+}
+
+.today {
+	fill: orange;
+	opacity: 1;
+	stroke: #333;
+	stroke-width: 2px;
+	stroke-opacity: 0.9;
+}
+
+.weekDays {
+	fill: white;
+	opacity: 0.6;
+}
+
+.weekDays:hover {
+	opacity: 1;
+}
+
+#dayCircle {
+	opacity: 1;
+}
+
+.thisWeek {
+	fill: orange;
+	opacity: 1;
+	stroke: #333;
+	stroke-width: 1px;
+	stroke-opacity: 0.9;
+}
+
+.weeks {
+	fill: white;
+	opacity: 0.5;
+}
+
+.weeks:hover {
+	opacity: 1;
+}
+
+.monthDaysText {
+	text-anchor: middle;
+}
+
+.buttonLabels {
+	fill: black;
+	pointer-events: none;
+	text-anchor: middle;
+}
+
+.typeButtons {
+	opacity: 0.6;
+}
+
+.typeButtons:hover {
+	opacity: 1;
+}
+
+.selectedType {
+	opacity: 1;
+	stroke: yellow;
+	stroke-width: 2px;
+}
+
+.submit {
+	background:transparent;
+}
+
+#editPageDeleteButton {
+	background:transparent;
+}
+
