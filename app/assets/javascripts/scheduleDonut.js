@@ -1,7 +1,7 @@
 
 // schedule donut
 
-var width = 1915, height = 1075, radius = 450;
+var width = 1080, height = 800, radius = 250;
 
 var now = new Date();
 
@@ -56,20 +56,20 @@ var svg = d3.select("body")
 
 		// circle transition on
 
-			schedule.transition().duration(999).attr("opacity", 1).attr("transform", "scale(1), translate(960,540), rotate("+clockR+")");
+			schedule.transition().duration(999).attr("opacity", 1).attr("transform", "scale(1), translate(540,300), rotate("+clockR+")");
 
 
 		// clock background svg image
 
-			var imgs = schedule.selectAll("img").data([0]);
-		    imgs.enter()
-		        .append("image")
-		        .attr("xlink:href", "/assets/drawing-1.svg")
-		        .attr("opacity", 0.3)
-		        .attr("x", -700)
-		        .attr("y", -690)
-		        .attr("width", "1400")
-		        .attr("height", "1400");
+			// var imgs = schedule.selectAll("img").data([0]);
+		 //    imgs.enter()
+		 //        .append("image")
+		 //        .attr("xlink:href", "/assets/drawing-1.svg")
+		 //        .attr("opacity", 0.3)
+		 //        .attr("x", -700)
+		 //        .attr("y", -690)
+		 //        .attr("width", "1400")
+		 //        .attr("height", "1400");
 
 
 
@@ -81,8 +81,8 @@ var svg = d3.select("body")
 	 	var rings = schedule.append("g");
 
 	 	var ring = d3.svg.arc()
-	 				.innerRadius(function(d,i) {return d*45})
-	 				.outerRadius(function(d,i) {return d*50})
+	 				.innerRadius(function(d,i) {return d*24})
+	 				.outerRadius(function(d,i) {return d*27})
 	 				.startAngle(0)
 	 				.endAngle(radians);
 
@@ -106,16 +106,16 @@ var svg = d3.select("body")
 		var dayOffset = 2;
 
 		var arc = d3.svg.arc()
-			.innerRadius(function(d, i) {if ((d.day-thisWkSundayEpoch+dayOffset)*45 < 0) {
+			.innerRadius(function(d, i) {if ((d.day-thisWkSundayEpoch+dayOffset)*24 < 0) {
 				return 0;}
 				else {
-					return (d.day-thisWkSundayEpoch+dayOffset)*45;
+					return (d.day-thisWkSundayEpoch+dayOffset)*24;
 				}
 			})
-			.outerRadius(function(d, i) {if ((d.day-thisWkSundayEpoch+dayOffset)*50 < 0) {
+			.outerRadius(function(d, i) {if ((d.day-thisWkSundayEpoch+dayOffset)*27 < 0) {
 				return 0;}
 				else {
-					return (d.day-thisWkSundayEpoch+dayOffset)*50;
+					return (d.day-thisWkSundayEpoch+dayOffset)*27;
 				}
 			})
 			.startAngle(function(d, i) {return (d.start/24)*radians;})
@@ -197,8 +197,8 @@ var svg = d3.select("body")
 		svg.append("text")
 			.text("time2")
 			.attr("id", "logo")
-			.attr("x", 525)
-			.attr("y", 112)
+			.attr("x", 120)
+			.attr("y", 100)
 			.attr("fill", "orange")
 			.attr("font-size", "36px");
 
@@ -208,7 +208,7 @@ var svg = d3.select("body")
 		svg.append("text")
 				.text("New Event")
 				.attr("class", "linky")
-				.attr("x", 535).attr("y", 135)
+				.attr("x", 128).attr("y", 122)
 				.attr("font-size", "14px")
 				.on("click", function(){ window.location += "/new"});
 
@@ -216,8 +216,8 @@ var svg = d3.select("body")
 	// change day range drag
 
 		var changeDayRangeDrag = svg.append("circle")
-			.attr("cx", 960)
-			.attr("cy", 540)
+			.attr("cx", 540)
+			.attr("cy", 300)
 			.attr("r", 30)
 			.attr("fill", "black")
 			.attr("opacity", 0)
@@ -247,7 +247,7 @@ var svg = d3.select("body")
 			    .on("drag", function() {
 			        clockR += d3.event.dx/10;
 			        centroidR -= d3.event.dx/10;
-			        schedule.transition().duration(0).attr("transform", "scale(1,1), translate(960,540), rotate("+(clockR)+")");
+			        schedule.transition().duration(0).attr("transform", "scale(1,1), translate(540,300), rotate("+(clockR)+")");
 		        	d3.selectAll(".schedCentroids")
 			        	.transition().duration(0).attr("transform", function(d,i) {return "translate(" + arc.centroid(d) +"), scale("+centroidScale+"), rotate("+(centroidR)+")"});
 		        	d3.selectAll(".hourNums")
@@ -281,7 +281,7 @@ var svg = d3.select("body")
 
 		// 	schedule.transition()
 		// 		.duration(1000)
-		// 		.attr("transform", "scale(1,1), translate(960,540), rotate("+decimalHourDegrees*-1+")");
+		// 		.attr("transform", "scale(1,1), translate(540,300), rotate("+decimalHourDegrees*-1+")");
 
 		// 	hText.transition()
 		// 		.duration(1000)

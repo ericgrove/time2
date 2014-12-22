@@ -21,10 +21,6 @@ div {
 	background: #eeeeee;
 }
 
-div#eventype {
-	background: transparent;
-}
-
 div#eventname {
 	width: 150px;
 }
@@ -83,14 +79,14 @@ input#event_name {
 }
 
 .formHourNums {
-	font: 20px sans-serif;
+	font: 17px sans-serif;
 	fill: #111;
 	pointer-events: none;
 	text-anchor: middle;
 }
 
 .formMinuteNums {
-	font: 10px sans-serif;
+	font: 8px sans-serif;
 	fill: #111;
 	pointer-events: none;
 	text-anchor: middle;
@@ -98,7 +94,7 @@ input#event_name {
 
 #dateDisplay {
 	fill: yellow;
-	font: 20px sans-serif;
+	font: 15px sans-serif;
 	text-anchor: middle;
 }
 
@@ -119,7 +115,7 @@ input#event_name {
 	
 }
 #startHNums, #endHNums, #startMNums, #endMNums, #durHNums, #durMNums {
-	font: 20px sans-serif;
+	font: 15px sans-serif;
 }
 #middy {
 	opacity: 0.5;
@@ -145,6 +141,12 @@ input#event_name {
 	opacity: 0.7;
 }
 
+.yearText {
+	font-size: 40px;
+	font-weight: bold;
+	text-anchor: middle;
+	pointer-events: none;
+}
 .today {
 	fill: orange;
 	opacity: 1;
@@ -183,6 +185,11 @@ input#event_name {
 	opacity: 1;
 }
 
+.dayLabels {
+	font-size: 12px;
+	pointer-events: none;
+	text-anchor: middle;
+}
 .monthDaysText {
 	text-anchor: middle;
 }
