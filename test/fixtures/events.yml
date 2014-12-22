@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  start: 9.99
+  duration: 9.99
+  eventype: MyString
+  repetition: MyString
+
+two:
+  name: MyString
+  description: MyString
+  start: 9.99
+  duration: 9.99
+  eventype: MyString
+  repetition: MyString

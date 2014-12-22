@@ -1,0 +1,7 @@
+events = {[
+	{"id":1,"name":"lunch","start":"0.0","duration":"1.0"},
+	{"id":2,"name":"play w/Sierra","start":"1.0","duration":"1.0"},
+	{"id":4,"name":"rake","start":"4.25","duration":"1.25"},
+	{"id":5,"name":"food shop","start":"5.5","duration":"0.75"},
+	{"id":6,"name":"oddOne","start":"3.13","duration":"2.18"}
+]}

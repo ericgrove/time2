@@ -1,0 +1,14 @@
+<%- model_class = Event -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+
+<%= javascript_tag do %>
+	var nowT = new Date();
+	var dayT = nowT.getDay();
+	var currentT = nowT.getHours() + nowT.getMinutes()/60;
+	var eventStart = currentT;
+	var eventDur = 0;
+	var eventDay = epochDay;
+<% end %>
+<%= render :partial => 'form' %>
