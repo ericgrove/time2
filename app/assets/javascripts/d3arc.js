@@ -326,11 +326,7 @@ var svg = d3.select("#clock")
 					var marwk6path = marCircle.append("path")
 						.attr("d", marwk6arc)
 						.attr("class", "weeks");
-<<<<<<< HEAD
-// change for git test a second time third time
-=======
 
->>>>>>> abe9b22fa6cf4be8401c750492220c62d5f11083
 
 		// apr circle
 			var aprCircle = yearCircle.append("g")
