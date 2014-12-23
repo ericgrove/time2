@@ -1353,7 +1353,7 @@ var svg = d3.select("#clock")
 										.text(function () {return dayLabels[i]})
 										.attr("class", "dayLabels")
 										.attr("x", 0)
-										.attr("y", 7)
+										.attr("y", 3)
 										.attr("transform", "rotate("+(i*(360/7)+2+(360/14))+"), translate(-4,"+ (radius * -1.125) +"), rotate("+(i*(-360/7)-2-(360/14))+")")
 				};
 
