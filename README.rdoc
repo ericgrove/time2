@@ -1,28 +1,12 @@
-== README
+This is my practice web app using Ruby on Rails and d3js.  It is a scheduler based on a circular design.  
+It is a work in progress, but it currently functions.  So far, I've focused on getting the basic features to work.  
+Next, I will be redesigning it to be more intuitive and animated.  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version    2.1.2
 
-Things you may want to cover:
+The schedule donut chart can be rotated by dragging anywhere inside the main circle, 
+except for the small dark circle in the middle, which zooms in and out through different days, 
+future and past.  The main circle displays a little over one week at a time.  
+The colors of the arcs (events) represent three different types of events: daily life, must do, and would like.  
+Clicking on an event sends you to the edit tool.  In the upper left, there is a 'New Event' button.  
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
