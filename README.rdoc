@@ -1,6 +1,7 @@
 This is my practice web app using Ruby on Rails and d3js.  It is a scheduler based on a circular design.  
 It is a work in progress, but it currently functions.  So far, I've focused on getting the basic features to work.  
 Next, I will be redesigning it to be more intuitive and animated.  
+There is a live version at https://glacial-spire-3538.herokuapp.com/events.  
 
 * Ruby version    2.1.2
 
