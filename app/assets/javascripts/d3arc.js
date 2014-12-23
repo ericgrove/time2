@@ -1223,7 +1223,7 @@ var svg = d3.select("#clock")
 						.attr("d", decwk3arc)
 						.attr("class", "weeks")
 						.on("click", function () {
-							assignWk(51);
+							assignWk(-1);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -1238,7 +1238,7 @@ var svg = d3.select("#clock")
 						.attr("d", decwk4arc)
 						.attr("class", "thisWeek")
 						.on("click", function () {
-							assignWk(52);
+							assignWk(0);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -1253,7 +1253,7 @@ var svg = d3.select("#clock")
 						.attr("d", decwk5arc)
 						.attr("class", "weeks")
 						.on("click", function () {
-							assignWk(53);
+							assignWk(1);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
