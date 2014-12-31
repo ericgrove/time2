@@ -70,7 +70,7 @@ var svg = d3.select("body")
 		 //        .attr("y", -690)
 		 //        .attr("width", "1400")
 		 //        .attr("height", "1400");
-console.log(window.innerWidth);
+
 
 
 	// rings
