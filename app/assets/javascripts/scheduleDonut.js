@@ -1,7 +1,7 @@
 
 // schedule donut
 
-var width = 1080, height = 800, radius = 250;
+var width = window.innerWidth, height = window.innerHeight, radius = function() { if (window.innerWidth<window.innerHeight) return window.innerWidth/2.2; else return window.innerHeight/2.2;};
 
 var now = new Date();
 
@@ -32,14 +32,14 @@ var svg = d3.select("body")
 		var clockR = (decimalHourDegrees*-1);
 
 		var schedule = svg.append("g")
-			.attr("transform", "scale(0), translate(0,0), rotate(0)")
+			.attr("transform", "scale(0), translate("+width/2+","+height/2+"), rotate(0)")
 			.attr("opacity", 0)
 			.attr("id", "circleG");
 
 		var circleShape = schedule.append("circle")
 			.attr("cx",0)
 			.attr("cy",0)
-			.attr("r",radius)
+			.attr("r",radius())
 			.attr("fill", function() {return "url(#grad)";})
 			.attr("id", "circle");	
 
@@ -47,7 +47,7 @@ var svg = d3.select("body")
 			.attr("gradientUnits", "userSpaceOnUse")
 			.attr("cx", 0)
 			.attr("cy", 0)
-			.attr("r", "80%")
+			.attr("r", "100%")
 			.attr("id", "grad");
 
 		grads.append("stop").attr("offset", "0%").style("stop-color", "rgba(50,50,50,1)");
@@ -56,7 +56,7 @@ var svg = d3.select("body")
 
 		// circle transition on
 
-			schedule.transition().duration(999).attr("opacity", 1).attr("transform", "scale(1), translate(540,300), rotate("+clockR+")");
+			schedule.transition().duration(999).attr("opacity", 1).attr("transform", "scale(1), translate("+width/2+","+height/2+"), rotate("+clockR+")");
 
 
 		// clock background svg image
@@ -70,7 +70,7 @@ var svg = d3.select("body")
 		 //        .attr("y", -690)
 		 //        .attr("width", "1400")
 		 //        .attr("height", "1400");
-
+console.log(window.innerWidth);
 
 
 	// rings
@@ -81,8 +81,8 @@ var svg = d3.select("body")
 	 	var rings = schedule.append("g");
 
 	 	var ring = d3.svg.arc()
-	 				.innerRadius(function(d,i) {return d*24})
-	 				.outerRadius(function(d,i) {return d*27})
+	 				.innerRadius(function(d,i) {return d*(radius()/10)})
+	 				.outerRadius(function(d,i) {return d*(radius()/9)})
 	 				.startAngle(0)
 	 				.endAngle(radians);
 
@@ -164,7 +164,7 @@ var svg = d3.select("body")
 			hoursText.push(j);
 		};
 
-		var hTextRadius = radius - 20;
+		var hTextRadius = radius() - 20;
 
 		var hText = schedule.selectAll(".hourNums")
 			.data(hoursText)
@@ -181,8 +181,8 @@ var svg = d3.select("body")
 	// now hand
 			
 		var nowArc = d3.svg.arc()
-			.outerRadius(radius*0.96)
-			.innerRadius(radius*0.69)
+			.outerRadius(radius()*0.96)
+			.innerRadius(radius()*0.69)
 			.startAngle(function() {return decimalHourRadians-0.003;})
 			.endAngle(function() {return decimalHourRadians+0.003;});
 
@@ -197,8 +197,8 @@ var svg = d3.select("body")
 		svg.append("text")
 			.text("time2")
 			.attr("id", "logo")
-			.attr("x", 120)
-			.attr("y", 100)
+			.attr("x", width/20)
+			.attr("y", height/10)
 			.attr("fill", "orange")
 			.attr("font-size", "36px");
 
@@ -208,7 +208,7 @@ var svg = d3.select("body")
 		svg.append("text")
 				.text("New Event")
 				.attr("class", "linky")
-				.attr("x", 128).attr("y", 122)
+				.attr("x", width/17).attr("y", height/7.5)
 				.attr("font-size", "14px")
 				.on("click", function(){ window.location += "/new"});
 
@@ -216,9 +216,9 @@ var svg = d3.select("body")
 	// change day range drag
 
 		var changeDayRangeDrag = svg.append("circle")
-			.attr("cx", 540)
-			.attr("cy", 300)
-			.attr("r", 30)
+			.attr("cx", width/2)
+			.attr("cy", height/2)
+			.attr("r", radius()/10)
 			.attr("fill", "black")
 			.attr("opacity", 0)
 			.attr("id", "changeDayRangeDrag");
@@ -247,7 +247,7 @@ var svg = d3.select("body")
 			    .on("drag", function() {
 			        clockR += d3.event.dx/10;
 			        centroidR -= d3.event.dx/10;
-			        schedule.transition().duration(0).attr("transform", "scale(1,1), translate(540,300), rotate("+(clockR)+")");
+			        schedule.transition().duration(0).attr("transform", "scale(1,1), translate("+width/2+","+height/2+"), rotate("+(clockR)+")");
 		        	d3.selectAll(".schedCentroids")
 			        	.transition().duration(0).attr("transform", function(d,i) {return "translate(" + arc.centroid(d) +"), scale("+centroidScale+"), rotate("+(centroidR)+")"});
 		        	d3.selectAll(".hourNums")
