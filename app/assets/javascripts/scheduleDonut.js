@@ -106,16 +106,16 @@ var svg = d3.select("body")
 		var dayOffset = 2;
 
 		var arc = d3.svg.arc()
-			.innerRadius(function(d, i) {if ((d.day-thisWkSundayEpoch+dayOffset)*24 < 0) {
+			.innerRadius(function(d, i) {if ((d.day-thisWkSundayEpoch+dayOffset)*(radius()/10) < 0) {
 				return 0;}
 				else {
-					return (d.day-thisWkSundayEpoch+dayOffset)*24;
+					return (d.day-thisWkSundayEpoch+dayOffset)*(radius()/10);
 				}
 			})
-			.outerRadius(function(d, i) {if ((d.day-thisWkSundayEpoch+dayOffset)*27 < 0) {
+			.outerRadius(function(d, i) {if ((d.day-thisWkSundayEpoch+dayOffset)*(radius()/9) < 0) {
 				return 0;}
 				else {
-					return (d.day-thisWkSundayEpoch+dayOffset)*27;
+					return (d.day-thisWkSundayEpoch+dayOffset)*(radius()/9);
 				}
 			})
 			.startAngle(function(d, i) {return (d.start/24)*radians;})
