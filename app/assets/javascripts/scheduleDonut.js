@@ -173,7 +173,6 @@ var svg = d3.select("body")
 			.attr("class", "hourNums")
 			.attr("x",-0)
 			.attr("y",8)
-			.attr("fill", "orange")
 			.attr("transform", function(d,i) {return "rotate("+(d*15+180)+"), translate(0,"+hTextRadius+"), rotate("+((d*-15)+decimalHourDegrees+180)+")"})
 			.text(function(d) {return d});
 
@@ -208,10 +207,37 @@ var svg = d3.select("body")
 		svg.append("text")
 				.text("New Event")
 				.attr("class", "linky")
-				.attr("x", width/17).attr("y", height/7.5)
-				.attr("font-size", "14px")
+				.attr("x", width/18).attr("y", height/8)
 				.on("click", function(){ window.location += "/new"});
 
+
+
+	// rotate clock drag
+
+			var clockDragCircle = svg.append("circle")
+				.attr("cx", width/2)
+				.attr("cy", height/2)
+				.attr("r", radius()/5)
+				.attr("fill", "blue")
+				.attr("opacity", 0)
+				.attr("id", "rotateClockDrag");
+
+			clockDragCircle.transition().delay(500).duration(500).attr("transform", "translate(0,0)").attr("opacity", 0.4);
+
+			var centroidR = decimalHourDegrees;
+
+			var clockDrag = d3.behavior.drag()
+				    .on("drag", function() {
+				        clockR += d3.event.dx/10;
+				        centroidR -= d3.event.dx/10;
+				        schedule.transition().duration(0).attr("transform", "scale(1,1), translate("+width/2+","+height/2+"), rotate("+(clockR)+")");
+			        	d3.selectAll(".schedCentroids")
+				        	.transition().duration(0).attr("transform", function(d,i) {return "translate(" + arc.centroid(d) +"), scale("+centroidScale+"), rotate("+(centroidR)+")"});
+			        	d3.selectAll(".hourNums")
+				        	.transition().duration(0).attr("transform", function(d,i) {return "rotate("+(d*15+180)+"), translate(0,"+hTextRadius+"), rotate("+((d*-15)+centroidR+180)+")"});
+				    });	
+
+			clockDragCircle.call(clockDrag);
 
 	// change day range drag
 
@@ -223,7 +249,7 @@ var svg = d3.select("body")
 			.attr("opacity", 0)
 			.attr("id", "changeDayRangeDrag");
 
-		changeDayRangeDrag.transition().delay(500).duration(500).attr("r", 30).attr("opacity", 0.4);
+		changeDayRangeDrag.transition().delay(500).duration(500).attr("r", radius()/10).attr("opacity", 0.4);
 
 		var dayRangeDrag = d3.behavior.drag()
 			    .on("drag", function(d,i) {
@@ -239,22 +265,7 @@ var svg = d3.select("body")
 		changeDayRangeDrag.call(dayRangeDrag);
 
 
-	// rotate clock drag
-
-		var centroidR = decimalHourDegrees;
-
-		var clockDrag = d3.behavior.drag()
-			    .on("drag", function() {
-			        clockR += d3.event.dx/10;
-			        centroidR -= d3.event.dx/10;
-			        schedule.transition().duration(0).attr("transform", "scale(1,1), translate("+width/2+","+height/2+"), rotate("+(clockR)+")");
-		        	d3.selectAll(".schedCentroids")
-			        	.transition().duration(0).attr("transform", function(d,i) {return "translate(" + arc.centroid(d) +"), scale("+centroidScale+"), rotate("+(centroidR)+")"});
-		        	d3.selectAll(".hourNums")
-			        	.transition().duration(0).attr("transform", function(d,i) {return "rotate("+(d*15+180)+"), translate(0,"+hTextRadius+"), rotate("+((d*-15)+centroidR+180)+")"});
-			    });	
-
-		schedule.call(clockDrag);
+	
 
 
 	// time update

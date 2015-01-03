@@ -60,7 +60,6 @@ var svg = d3.select("#clock")
 										.attr("r", dayRadius * 0.18);
 
 					var janText = janCircle.append("text")
-										.attr("x", -11)
 										.attr("y", 4)
 										.text("Jan");
 
@@ -175,8 +174,7 @@ var svg = d3.select("#clock")
 										.attr("fill", "#3cf");
 
 					var febText = febCircle.append("text")
-										.attr("x", -12)
-										.attr("y", 5)
+										.attr("y", 4)
 										.text("Feb");
 
 					var febDaysText = [1];
@@ -275,8 +273,7 @@ var svg = d3.select("#clock")
 										.attr("r", dayRadius * 0.18);
 
 					var marText = marCircle.append("text")
-										.attr("x", -12)
-										.attr("y", 5)
+										.attr("y", 4)
 										.text("Mar");
 
 					var marDaysText = [1];
@@ -391,8 +388,7 @@ var svg = d3.select("#clock")
 										.attr("r", dayRadius * 0.18);
 
 					var aprText = aprCircle.append("text")
-										.attr("x", -12)
-										.attr("y", 5)
+										.attr("y", 4)
 										.text("Apr");
 
 					var aprDaysText = [1];
@@ -481,8 +477,7 @@ var svg = d3.select("#clock")
 										.attr("r", dayRadius * 0.18);
 
 					var mayText = mayCircle.append("text")
-										.attr("x", -12)
-										.attr("y", 5)
+										.attr("y", 4)
 										.text("May");
 
 					var mayDaysText = [1];
@@ -571,8 +566,7 @@ var svg = d3.select("#clock")
 										.attr("r", dayRadius * 0.18);
 
 					var junText = junCircle.append("text")
-										.attr("x", -12)
-										.attr("y", 5)
+										.attr("y", 4)
 										.text("Jun");
 
 					var junDaysText = [1];
@@ -661,8 +655,7 @@ var svg = d3.select("#clock")
 										.attr("r", dayRadius * 0.18);
 
 					var julText = julCircle.append("text")
-										.attr("x", -12)
-										.attr("y", 5)
+										.attr("y", 4)
 										.text("Jul");
 
 					var julDaysText = [1];
@@ -751,8 +744,7 @@ var svg = d3.select("#clock")
 										.attr("r", dayRadius * 0.18);
 
 					var augText = augCircle.append("text")
-										.attr("x", -12)
-										.attr("y", 5)
+										.attr("y", 4)
 										.text("Aug");
 
 					var augDaysText = [1];
@@ -851,8 +843,7 @@ var svg = d3.select("#clock")
 										.attr("r", dayRadius * 0.18);
 
 					var sepText = sepCircle.append("text")
-										.attr("x", -12)
-										.attr("y", 5)
+										.attr("y", 4)
 										.text("Sep");
 
 					var sepDaysText = [1];
@@ -941,8 +932,7 @@ var svg = d3.select("#clock")
 										.attr("r", dayRadius * 0.18);
 
 					var octText = octCircle.append("text")
-										.attr("x", -12)
-										.attr("y", 5)
+										.attr("y", 4)
 										.text("Oct");
 
 					var octDaysText = [1];
@@ -1031,8 +1021,7 @@ var svg = d3.select("#clock")
 										.attr("r", dayRadius * 0.18);
 
 					var novText = novCircle.append("text")
-										.attr("x", -12)
-										.attr("y", 5)
+										.attr("y", 4)
 										.text("Nov");
 
 					var novDaysText = [1];
@@ -1157,8 +1146,7 @@ var svg = d3.select("#clock")
 										.attr("r", dayRadius * 0.18)
 										.attr("fill", "#3cf");
 					var decText = decCircle.append("text")
-										.attr("x", -12)
-										.attr("y", 5)
+										.attr("y", 4)
 										.text("Dec");
 
 					var decDaysText = [1];

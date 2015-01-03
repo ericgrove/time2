@@ -2,6 +2,10 @@ body {
 	background: #222;
 }
 
+h1 {
+	color: orange;
+}
+
 input {
 	border: 0px;
 	background: transparent;
@@ -18,7 +22,11 @@ div {
     margin: 13px auto 13px;
 	border-radius: 3px;
 	border: none;
-	background: #eeeeee;
+	background: transparent;
+}
+
+div.page-header {
+	border: none;
 }
 
 div#eventname {
@@ -26,6 +34,9 @@ div#eventname {
 }
 
 input#event_name {
+	font-size: 0.8em;
+	border-radius: 3px;
+	background: white;
 	width: 100%;
 	height: 20px;
 }
@@ -137,6 +148,11 @@ input#event_name {
 	fill: #c30;
 }
 
+.monthCircle {
+	font-size: 0.8em;
+	text-anchor: middle;
+}
+
 .winterMonths, .springMonths, .summerMonths, .fallMonths {
 	opacity: 0.7;
 }
@@ -195,6 +211,7 @@ input#event_name {
 }
 
 .buttonLabels {
+	font-size: 0.8em;
 	fill: black;
 	pointer-events: none;
 	text-anchor: middle;
