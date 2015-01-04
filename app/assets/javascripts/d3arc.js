@@ -51,10 +51,46 @@ var svg = d3.select("#clock")
 
 		var sunday2014wk1 = 16061;
 
-		function assignWk(selectedWk) {
-			currentWkSunday = (selectedWk * 7) + sunday2014wk1+364;
-		};
+		var currentWkSunday;
 
+		var todayWkDay = now.getDay();
+
+		var epoch = now.getTime();
+
+		var epochDay = Math.floor(epoch/8.64e7);
+
+		var eventDay;
+
+		var eventDate;
+
+		var dateForDisplay;
+
+		var eventDayWkDay = (eventDay - sunday2014wk1) % 7;
+
+		var dayField = document.getElementById("event_day");
+
+		if (eventDay) {		// editing an existing event
+			eventDay = eventDay;	
+			currentWkSunday = eventDay - eventDayWkDay;
+			eventDate = new Date((eventDay+1)*8.64e7);
+			dateForDisplay = eventDate.getMonth()+1+"/"+eventDate.getDate()+"/"+eventDate.getYear().toString().substr(1,2);
+			}
+			else {			// creating a new event
+			eventDay = epochDay;
+			currentWkSunday = epochDay - todayWkDay;
+			dateForDisplay = now.getMonth()+1+"/"+now.getDate()+"/"+now.getYear().toString().substr(1,2);
+		};
+		
+		dayField.value =  eventDay;
+
+		var eventWk = Math.round((currentWkSunday-(sunday2014wk1-3))/7);
+
+		assignWk(eventWk);
+			console.log(eventWk);
+
+		function assignWk(selectedWk) {
+			currentWkSunday = (selectedWk * 7) + sunday2014wk1;
+		};
 
 		// jan circle
 			var janCircle = yearCircle.append("g")
@@ -101,9 +137,14 @@ var svg = d3.select("#clock")
 
 					var janwk1path = janCircle.append("path")
 						.attr("d", janwk1arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 53)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(1);
+							assignWk(53);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -116,9 +157,14 @@ var svg = d3.select("#clock")
 
 					var janwk2path = janCircle.append("path")
 						.attr("d", janwk2arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 54)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(2);
+							assignWk(54);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -131,9 +177,14 @@ var svg = d3.select("#clock")
 
 					var janwk3path = janCircle.append("path")
 						.attr("d", janwk3arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(3);
+							assignWk(55);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -146,9 +197,14 @@ var svg = d3.select("#clock")
 
 					var janwk4path = janCircle.append("path")
 						.attr("d", janwk4arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 56)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(4);
+							assignWk(56);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -161,9 +217,14 @@ var svg = d3.select("#clock")
 
 					var janwk5path = janCircle.append("path")
 						.attr("d", janwk5arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 57)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(5);
+							assignWk(57);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -215,9 +276,14 @@ var svg = d3.select("#clock")
 
 					var febwk1path = febCircle.append("path")
 						.attr("d", febwk1arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 58)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(6);
+							assignWk(58);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -230,9 +296,14 @@ var svg = d3.select("#clock")
 
 					var febwk2path = febCircle.append("path")
 						.attr("d", febwk2arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 59)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(7);
+							assignWk(59);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -245,9 +316,14 @@ var svg = d3.select("#clock")
 
 					var febwk3path = febCircle.append("path")
 						.attr("d", febwk3arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 60)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(8);
+							assignWk(60);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -260,9 +336,14 @@ var svg = d3.select("#clock")
 
 					var febwk4path = febCircle.append("path")
 						.attr("d", febwk4arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 61)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(9);
+							assignWk(61);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -315,9 +396,14 @@ var svg = d3.select("#clock")
 
 					var marwk1path = marCircle.append("path")
 						.attr("d", marwk1arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 62)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(10);
+							assignWk(62);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -330,9 +416,14 @@ var svg = d3.select("#clock")
 
 					var marwk2path = marCircle.append("path")
 						.attr("d", marwk2arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 63)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(11);
+							assignWk(63);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -345,9 +436,14 @@ var svg = d3.select("#clock")
 
 					var marwk3path = marCircle.append("path")
 						.attr("d", marwk3arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 64)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(12);
+							assignWk(64);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -360,9 +456,14 @@ var svg = d3.select("#clock")
 
 					var marwk4path = marCircle.append("path")
 						.attr("d", marwk4arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 65)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(13);
+							assignWk(65);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -375,9 +476,14 @@ var svg = d3.select("#clock")
 
 					var marwk5path = marCircle.append("path")
 						.attr("d", marwk5arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 66)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
-							assignWk(14);
+							assignWk(66);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -430,7 +536,17 @@ var svg = d3.select("#clock")
 
 					var aprwk1path = aprCircle.append("path")
 						.attr("d", aprwk1arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 66)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(66);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					var aprwk2arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -440,7 +556,17 @@ var svg = d3.select("#clock")
 
 					var aprwk2path = aprCircle.append("path")
 						.attr("d", aprwk2arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 67)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(67);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					var aprwk3arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -450,7 +576,17 @@ var svg = d3.select("#clock")
 
 					var aprwk3path = aprCircle.append("path")
 						.attr("d", aprwk3arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 68)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(68);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					var aprwk4arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -460,7 +596,17 @@ var svg = d3.select("#clock")
 
 					var aprwk4path = aprCircle.append("path")
 						.attr("d", aprwk4arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 69)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(69);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					var aprwk5arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -470,7 +616,17 @@ var svg = d3.select("#clock")
 
 					var aprwk5path = aprCircle.append("path")
 						.attr("d", aprwk5arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 70)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(70);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					
 		// may circle
@@ -515,51 +671,121 @@ var svg = d3.select("#clock")
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
 						.startAngle((1/mayDaysText.length)*radians)
-						.endAngle((3.8/mayDaysText.length)*radians);
+						.endAngle((2.8/mayDaysText.length)*radians);
 
 					var maywk1path = mayCircle.append("path")
 						.attr("d", maywk1arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 70)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(70);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					var maywk2arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((4/mayDaysText.length)*radians)
-						.endAngle((10.8/mayDaysText.length)*radians);
+						.startAngle((3/mayDaysText.length)*radians)
+						.endAngle((9.8/mayDaysText.length)*radians);
 
 					var maywk2path = mayCircle.append("path")
 						.attr("d", maywk2arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 71)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(71);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					var maywk3arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((11/mayDaysText.length)*radians)
-						.endAngle((17.8/mayDaysText.length)*radians);
+						.startAngle((10/mayDaysText.length)*radians)
+						.endAngle((16.8/mayDaysText.length)*radians);
 
 					var maywk3path = mayCircle.append("path")
 						.attr("d", maywk3arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 72)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(72);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					var maywk4arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((18/mayDaysText.length)*radians)
-						.endAngle((24.8/mayDaysText.length)*radians);
+						.startAngle((17/mayDaysText.length)*radians)
+						.endAngle((23.8/mayDaysText.length)*radians);
 
 					var maywk4path = mayCircle.append("path")
 						.attr("d", maywk4arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 73)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(73);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					var maywk5arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((25/mayDaysText.length)*radians)
-						.endAngle((31.8/mayDaysText.length)*radians);
+						.startAngle((24/mayDaysText.length)*radians)
+						.endAngle((30.8/mayDaysText.length)*radians);
 
 					var maywk5path = mayCircle.append("path")
 						.attr("d", maywk5arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 74)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(74);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
+
+					var maywk6arc = d3.svg.arc()
+						.outerRadius(monthWkArcOuterR)
+						.innerRadius(monthWkArcInnerR)
+						.startAngle((31/mayDaysText.length)*radians)
+						.endAngle((31.8/mayDaysText.length)*radians);
+
+					var maywk6path = mayCircle.append("path")
+						.attr("d", maywk6arc)
+						.attr("class", function(){
+							if (eventWk == 75)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(75);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 
 		// jun circle
@@ -608,7 +834,12 @@ var svg = d3.select("#clock")
 
 					var junwk1path = junCircle.append("path")
 						.attr("d", junwk1arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var junwk2arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -618,7 +849,12 @@ var svg = d3.select("#clock")
 
 					var junwk2path = junCircle.append("path")
 						.attr("d", junwk2arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var junwk3arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -628,7 +864,12 @@ var svg = d3.select("#clock")
 
 					var junwk3path = junCircle.append("path")
 						.attr("d", junwk3arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var junwk4arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -638,7 +879,12 @@ var svg = d3.select("#clock")
 
 					var junwk4path = junCircle.append("path")
 						.attr("d", junwk4arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var junwk5arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -648,7 +894,12 @@ var svg = d3.select("#clock")
 
 					var junwk5path = junCircle.append("path")
 						.attr("d", junwk5arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 
 		// jul circle
@@ -697,7 +948,12 @@ var svg = d3.select("#clock")
 
 					var julwk1path = julCircle.append("path")
 						.attr("d", julwk1arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var julwk2arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -707,7 +963,12 @@ var svg = d3.select("#clock")
 
 					var julwk2path = julCircle.append("path")
 						.attr("d", julwk2arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var julwk3arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -717,7 +978,12 @@ var svg = d3.select("#clock")
 
 					var julwk3path = julCircle.append("path")
 						.attr("d", julwk3arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var julwk4arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -727,7 +993,12 @@ var svg = d3.select("#clock")
 
 					var julwk4path = julCircle.append("path")
 						.attr("d", julwk4arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var julwk5arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -737,7 +1008,12 @@ var svg = d3.select("#clock")
 
 					var julwk5path = julCircle.append("path")
 						.attr("d", julwk5arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 
 		// aug circle
@@ -786,7 +1062,12 @@ var svg = d3.select("#clock")
 
 					var augwk1path = augCircle.append("path")
 						.attr("d", augwk1arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var augwk2arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -796,7 +1077,12 @@ var svg = d3.select("#clock")
 
 					var augwk2path = augCircle.append("path")
 						.attr("d", augwk2arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var augwk3arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -806,7 +1092,12 @@ var svg = d3.select("#clock")
 
 					var augwk3path = augCircle.append("path")
 						.attr("d", augwk3arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var augwk4arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -816,7 +1107,12 @@ var svg = d3.select("#clock")
 
 					var augwk4path = augCircle.append("path")
 						.attr("d", augwk4arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var augwk5arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -826,7 +1122,12 @@ var svg = d3.select("#clock")
 
 					var augwk5path = augCircle.append("path")
 						.attr("d", augwk5arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var augwk6arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -836,7 +1137,12 @@ var svg = d3.select("#clock")
 
 					var augwk6path = augCircle.append("path")
 						.attr("d", augwk6arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 
 		// sep circle
@@ -885,7 +1191,12 @@ var svg = d3.select("#clock")
 
 					var sepwk1path = sepCircle.append("path")
 						.attr("d", sepwk1arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var sepwk2arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -895,7 +1206,12 @@ var svg = d3.select("#clock")
 
 					var sepwk2path = sepCircle.append("path")
 						.attr("d", sepwk2arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var sepwk3arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -905,7 +1221,12 @@ var svg = d3.select("#clock")
 
 					var sepwk3path = sepCircle.append("path")
 						.attr("d", sepwk3arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var sepwk4arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -915,7 +1236,12 @@ var svg = d3.select("#clock")
 
 					var sepwk4path = sepCircle.append("path")
 						.attr("d", sepwk4arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var sepwk5arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -925,7 +1251,12 @@ var svg = d3.select("#clock")
 
 					var sepwk5path = sepCircle.append("path")
 						.attr("d", sepwk5arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					
 		// oct circle
@@ -974,7 +1305,12 @@ var svg = d3.select("#clock")
 
 					var octwk1path = octCircle.append("path")
 						.attr("d", octwk1arc)
-						.attr("class", "weeks");
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						});
 
 					var octwk2arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -984,7 +1320,12 @@ var svg = d3.select("#clock")
 
 					var octwk2path = octCircle.append("path")
 						.attr("d", octwk2arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 
 					var octwk3arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -994,7 +1335,12 @@ var svg = d3.select("#clock")
 
 					var octwk3path = octCircle.append("path")
 						.attr("d", octwk3arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 
 					var octwk4arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -1004,7 +1350,12 @@ var svg = d3.select("#clock")
 
 					var octwk4path = octCircle.append("path")
 						.attr("d", octwk4arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 
 					var octwk5arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -1014,7 +1365,12 @@ var svg = d3.select("#clock")
 
 					var octwk5path = octCircle.append("path")
 						.attr("d", octwk5arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 
 					
 		// nov circle
@@ -1063,7 +1419,12 @@ var svg = d3.select("#clock")
 
 					var novwk1path = novCircle.append("path")
 						.attr("d", novwk1arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {assignWk(44)});
 
 					var novwk2arc = d3.svg.arc()
@@ -1074,7 +1435,12 @@ var svg = d3.select("#clock")
 
 					var novwk2path = novCircle.append("path")
 						.attr("d", novwk2arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
 							assignWk(45);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
@@ -1089,7 +1455,12 @@ var svg = d3.select("#clock")
 
 					var novwk3path = novCircle.append("path")
 						.attr("d", novwk3arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
 							assignWk(46);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
@@ -1104,7 +1475,12 @@ var svg = d3.select("#clock")
 
 					var novwk4path = novCircle.append("path")
 						.attr("d", novwk4arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
 							assignWk(47);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
@@ -1119,7 +1495,12 @@ var svg = d3.select("#clock")
 
 					var novwk5path = novCircle.append("path")
 						.attr("d", novwk5arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
 							assignWk(48);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
@@ -1134,7 +1515,12 @@ var svg = d3.select("#clock")
 
 					var novwk6path = novCircle.append("path")
 						.attr("d", novwk6arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
 							assignWk(49);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
@@ -1188,7 +1574,12 @@ var svg = d3.select("#clock")
 
 					var decwk1path = decCircle.append("path")
 						.attr("d", decwk1arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
 							assignWk(49);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
@@ -1203,7 +1594,12 @@ var svg = d3.select("#clock")
 
 					var decwk2path = decCircle.append("path")
 						.attr("d", decwk2arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
 							assignWk(50);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
@@ -1218,7 +1614,12 @@ var svg = d3.select("#clock")
 
 					var decwk3path = decCircle.append("path")
 						.attr("d", decwk3arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
 							assignWk(-1);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
@@ -1233,7 +1634,12 @@ var svg = d3.select("#clock")
 
 					var decwk4path = decCircle.append("path")
 						.attr("d", decwk4arc)
-						.attr("class", "thisWeek")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
 							assignWk(0);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
@@ -1248,7 +1654,12 @@ var svg = d3.select("#clock")
 
 					var decwk5path = decCircle.append("path")
 						.attr("d", decwk5arc)
-						.attr("class", "weeks")
+						.attr("class", function(){
+							if (eventWk == 55)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
 						.on("click", function () {
 							assignWk(1);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
@@ -1274,37 +1685,7 @@ var svg = d3.select("#clock")
 
 			var weekDayArcOuterR = weekRadius * 1.25;
 
-			var todayWkDay = now.getDay();
-
-			var epoch = now.getTime();
-
-			var epochDay = Math.floor(epoch/8.64e7);
-
-			var eventDay;
-
-			var eventDate;
-
-			var dateForDisplay;
-
-			var currentWkSunday;
-
-			var eventDayWkDay = (eventDay - sunday2014wk1) % 7;
-
-			var dayField = document.getElementById("event_day");
-
-			if (eventDay) {		// editing an existing event
-				eventDay = eventDay;	
-				currentWkSunday = eventDay - eventDayWkDay;
-				eventDate = new Date((eventDay+1)*8.64e7);
-				dateForDisplay = eventDate.getMonth()+1+"/"+eventDate.getDate()+"/"+eventDate.getYear().toString().substr(1,2);
-				}
-				else {			// creating a new event
-				eventDay = epochDay;
-				currentWkSunday = epochDay - todayWkDay;
-				dateForDisplay = now.getMonth()+1+"/"+now.getDate()+"/"+now.getYear().toString().substr(1,2);
-			};
-
-			dayField.value =  eventDay;
+			
 
 			function assignDay(selectedDay) {
 				eventDay = currentWkSunday + selectedDay;
@@ -1920,9 +2301,11 @@ var svg = d3.select("#clock")
 
 	// eventype buttons
 
+		var eventType; console.log(eventType);
+
 		var buttons = [{eventypeName: "Daily Life", eventypeColor: "#0f2"}, {eventypeName: "Must Do", eventypeColor: "#d33"}, {eventypeName: "Would Like", eventypeColor: "#26f"}];
 
-		
+		var buttonsField = document.getElementById("event_eventype");
 
 		var eventypeButtonsGroup = rootGroup.append("g")
 			.attr("width", width/2)
@@ -1934,7 +2317,12 @@ var svg = d3.select("#clock")
 			.data(buttons)
 			.enter()
 			.append("rect")
-			.attr("class", "typeButtons")
+			.attr("class", function(d,i) {
+				if (eventType==i)
+					return "selectedType";
+				else
+					return "typeButtons";
+			})
 			.attr("width", width*0.1)
 			.attr("height", height*0.04)
 			.attr("x", function(d,i){return width/2+(i-1)*(width/9.1)-47})
@@ -1943,7 +2331,7 @@ var svg = d3.select("#clock")
 			.attr("ry", 6)
 			.attr("fill", function(d,i){return d.eventypeColor})
 			.on("click", function(d,i){
-				buttonsField.value=d.eventypeColor;
+				buttonsField.value=i;
 				d3.select('.selectedType').classed({'selectedType': false, 'typeButtons': true});
 				d3.select(this).classed({'selectedType': true, 'typeButtons': false});
 			});
