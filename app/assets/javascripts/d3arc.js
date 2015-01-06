@@ -1575,7 +1575,7 @@ var svg = d3.select("#clock")
 					var decwk1path = decCircle.append("path")
 						.attr("d", decwk1arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 49)
 								return "thisWeek";
 							else
 								return "weeks";
@@ -1595,7 +1595,7 @@ var svg = d3.select("#clock")
 					var decwk2path = decCircle.append("path")
 						.attr("d", decwk2arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 50)
 								return "thisWeek";
 							else
 								return "weeks";
@@ -1615,13 +1615,13 @@ var svg = d3.select("#clock")
 					var decwk3path = decCircle.append("path")
 						.attr("d", decwk3arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 51)
 								return "thisWeek";
 							else
 								return "weeks";
 						})
 						.on("click", function () {
-							assignWk(-1);
+							assignWk(51);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -1635,13 +1635,13 @@ var svg = d3.select("#clock")
 					var decwk4path = decCircle.append("path")
 						.attr("d", decwk4arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 52)
 								return "thisWeek";
 							else
 								return "weeks";
 						})
 						.on("click", function () {
-							assignWk(0);
+							assignWk(52);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -1655,13 +1655,13 @@ var svg = d3.select("#clock")
 					var decwk5path = decCircle.append("path")
 						.attr("d", decwk5arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 53)
 								return "thisWeek";
 							else
 								return "weeks";
 						})
 						.on("click", function () {
-							assignWk(1);
+							assignWk(53);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});

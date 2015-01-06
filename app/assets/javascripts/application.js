@@ -12,10 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require d3
 //= require d3.v3
 //= require twitter/bootstrap
 //= require turbolinks
-//= require d3arc
-//= require scheduleDonut
 //= require_tree .
