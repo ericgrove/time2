@@ -268,7 +268,6 @@ var svg = d3.select("body")
 		changeDayRangeDrag.call(dayRangeDrag);
 
 
-	
 
 
 	// time update

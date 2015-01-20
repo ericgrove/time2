@@ -2301,7 +2301,7 @@ var svg = d3.select("#clock")
 
 	// eventype buttons
 
-		var eventType; console.log(eventType);
+		var eventType;
 
 		var buttons = [{eventypeName: "Daily Life", eventypeColor: "#0f2"}, {eventypeName: "Must Do", eventypeColor: "#d33"}, {eventypeName: "Would Like", eventypeColor: "#26f"}];
 
