@@ -165,7 +165,7 @@ var svg = d3.select("body")
 
 			var dayNumsGroup = monthCircleGroups.append("g")
 				.attr("class", "dayNumsGroup")
-				.attr("transform", function(d,i) {return "translate("+(i*200)+",0)"});
+				.attr("transform", function(d,i) {return "translate("+(i*200)+", 4)"});
 
 	var dayCircleGroup = svg.append("g")
 		.attr("id", "dayCircleGroup")
