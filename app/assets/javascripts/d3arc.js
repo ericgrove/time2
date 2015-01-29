@@ -69,6 +69,8 @@ var svg = d3.select("#clock")
 
 		var dayField = document.getElementById("event_day");
 
+		var monthDaysTextRadius = yearRadius * -0.16;
+
 		if (eventDay) {		// editing an existing event
 			eventDay = eventDay;	
 			currentWkSunday = eventDay - eventDayWkDay;
@@ -114,20 +116,18 @@ var svg = d3.select("#clock")
 						janDaysText.push(j);
 					};
 
-					var janDaysTextRadius = yearRadius * -0.156;
 					var janDaysAngleOffset = 360 / janDaysText.length;
 
-					var janDText = janCircle.selectAll(".janDaysText")
+					var janDText = janCircle.selectAll("#janDaysText")
 						.data(janDaysText)
 						.enter()
 						.append("text")
-						.attr("class", "janDaysText")
+						.attr("id", "janDaysText")
+						.attr("class", "monthDaysText")
 						.attr("x",0)
-						.attr("y",2)
-						.attr("transform", function(d,j) {return "rotate("+d*janDaysAngleOffset+")translate(0,"+janDaysTextRadius+") rotate("+(janDaysAngleOffset*-d)+")"})
-						.text(function(d) {return d})
-						.attr("text-anchor", "middle")
-						.attr("font-size", 3);
+						.attr("y",3)
+						.attr("transform", function(d,j) {return "rotate("+d*janDaysAngleOffset+")translate(0,"+monthDaysTextRadius+") rotate("+(janDaysAngleOffset*-d)+")"})
+						.text(function(d) {return d});
 
 					var janwk1arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -256,17 +256,16 @@ var svg = d3.select("#clock")
 					var febDaysTextRadius = yearRadius * -0.156;
 					var febDaysAngleOffset = 360 / febDaysText.length;
 
-					var febDText = febCircle.selectAll(".febDaysText")
+					var febDText = febCircle.selectAll("#febDaysText")
 						.data(febDaysText)
 						.enter()
 						.append("text")
-						.attr("class", "febDaysText")
+						.attr("id", "febDaysText")
+						.attr("class", "monthDaysText")
 						.attr("x",0)
-						.attr("y",2)
-						.attr("transform", function(d,j) {return "rotate("+d*febDaysAngleOffset+")translate(0,"+febDaysTextRadius+") rotate("+(febDaysAngleOffset*-d)+")"})
-						.text(function(d) {return d})
-						.attr("text-anchor", "middle")
-						.attr("font-size", 3);
+						.attr("y",3)
+						.attr("transform", function(d,j) {return "rotate("+d*febDaysAngleOffset+")translate(0,"+monthDaysTextRadius+") rotate("+(febDaysAngleOffset*-d)+")"})
+						.text(function(d) {return d});
 
 					var febwk1arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
@@ -375,17 +374,16 @@ var svg = d3.select("#clock")
 					var marDaysTextRadius = yearRadius * -0.156;
 					var marDaysAngleOffset = 360 / marDaysText.length;
 
-					var marDText = marCircle.selectAll(".marDaysText")
+					var marDText = marCircle.selectAll("#marDaysText")
 						.data(marDaysText)
 						.enter()
 						.append("text")
-						.attr("class", "marDaysText")
+						.attr("id", "marDaysText")
+						.attr("class", "monthDaysText")
 						.attr("x",0)
-						.attr("y",2)
-						.attr("transform", function(d,j) {return "rotate("+d*marDaysAngleOffset+")translate(0,"+marDaysTextRadius+") rotate("+(marDaysAngleOffset*-d)+")"})
-						.text(function(d) {return d})
-						.attr("text-anchor", "middle")
-						.attr("font-size", 3);
+						.attr("y",3)
+						.attr("transform", function(d,j) {return "rotate("+d*marDaysAngleOffset+")translate(0,"+monthDaysTextRadius+") rotate("+(marDaysAngleOffset*-d)+")"})
+						.text(function(d) {return d});
 
 
 					var marwk1arc = d3.svg.arc()
@@ -515,17 +513,16 @@ var svg = d3.select("#clock")
 					var aprDaysTextRadius = yearRadius * -0.156;
 					var aprDaysAngleOffset = 360 / aprDaysText.length;
 
-					var aprDText = aprCircle.selectAll(".aprDaysText")
+					var aprDText = aprCircle.selectAll("#aprDaysText")
 						.data(aprDaysText)
 						.enter()
 						.append("text")
-						.attr("class", "aprDaysText")
+						.attr("id", "aprDaysText")
+						.attr("class", "monthDaysText")
 						.attr("x",0)
-						.attr("y",2)
-						.attr("transform", function(d,j) {return "rotate("+d*aprDaysAngleOffset+")translate(0,"+aprDaysTextRadius+") rotate("+(aprDaysAngleOffset*-d)+")"})
-						.text(function(d) {return d})
-						.attr("text-anchor", "middle")
-						.attr("font-size", 3);
+						.attr("y",3)
+						.attr("transform", function(d,j) {return "rotate("+d*aprDaysAngleOffset+")translate(0,"+monthDaysTextRadius+") rotate("+(aprDaysAngleOffset*-d)+")"})
+						.text(function(d) {return d});
 
 
 					var aprwk1arc = d3.svg.arc()
@@ -654,17 +651,16 @@ var svg = d3.select("#clock")
 					var mayDaysTextRadius = yearRadius * -0.156;
 					var mayDaysAngleOffset = 360 / mayDaysText.length;
 
-					var mayDText = mayCircle.selectAll(".mayDaysText")
+					var mayDText = mayCircle.selectAll("#mayDaysText")
 						.data(mayDaysText)
 						.enter()
 						.append("text")
-						.attr("class", "mayDaysText")
+						.attr("id", "mayDaysText")
+						.attr("class", "monthDaysText")
 						.attr("x",0)
-						.attr("y",2)
-						.attr("transform", function(d,j) {return "rotate("+d*mayDaysAngleOffset+")translate(0,"+mayDaysTextRadius+") rotate("+(mayDaysAngleOffset*-d)+")"})
-						.text(function(d) {return d})
-						.attr("text-anchor", "middle")
-						.attr("font-size", 3);
+						.attr("y",3)
+						.attr("transform", function(d,j) {return "rotate("+d*mayDaysAngleOffset+")translate(0,"+monthDaysTextRadius+") rotate("+(mayDaysAngleOffset*-d)+")"})
+						.text(function(d) {return d});
 
 
 					var maywk1arc = d3.svg.arc()
@@ -813,17 +809,16 @@ var svg = d3.select("#clock")
 					var junDaysTextRadius = yearRadius * -0.156;
 					var junDaysAngleOffset = 360 / junDaysText.length;
 
-					var junDText = junCircle.selectAll(".junDaysText")
+					var junDText = junCircle.selectAll("#junDaysText")
 						.data(junDaysText)
 						.enter()
 						.append("text")
-						.attr("class", "junDaysText")
+						.attr("id", "junDaysText")
+						.attr("class", "monthDaysText")
 						.attr("x",0)
-						.attr("y",2)
-						.attr("transform", function(d,j) {return "rotate("+d*junDaysAngleOffset+")translate(0,"+junDaysTextRadius+") rotate("+(junDaysAngleOffset*-d)+")"})
-						.text(function(d) {return d})
-						.attr("text-anchor", "middle")
-						.attr("font-size", 3);
+						.attr("y",3)
+						.attr("transform", function(d,j) {return "rotate("+d*junDaysAngleOffset+")translate(0,"+monthDaysTextRadius+") rotate("+(junDaysAngleOffset*-d)+")"})
+						.text(function(d) {return d});
 
 
 					var junwk1arc = d3.svg.arc()
@@ -927,17 +922,16 @@ var svg = d3.select("#clock")
 					var julDaysTextRadius = yearRadius * -0.156;
 					var julDaysAngleOffset = 360 / julDaysText.length;
 
-					var julDText = julCircle.selectAll(".julDaysText")
+					var julDText = julCircle.selectAll("#julDaysText")
 						.data(julDaysText)
 						.enter()
 						.append("text")
-						.attr("class", "julDaysText")
+						.attr("id", "julDaysText")
+						.attr("class", "monthDaysText")
 						.attr("x",0)
-						.attr("y",2)
-						.attr("transform", function(d,j) {return "rotate("+d*julDaysAngleOffset+")translate(0,"+julDaysTextRadius+") rotate("+(julDaysAngleOffset*-d)+")"})
-						.text(function(d) {return d})
-						.attr("text-anchor", "middle")
-						.attr("font-size", 3);
+						.attr("y",3)
+						.attr("transform", function(d,j) {return "rotate("+d*julDaysAngleOffset+")translate(0,"+monthDaysTextRadius+") rotate("+(julDaysAngleOffset*-d)+")"})
+						.text(function(d) {return d});
 
 
 					var julwk1arc = d3.svg.arc()
@@ -1041,17 +1035,16 @@ var svg = d3.select("#clock")
 					var augDaysTextRadius = yearRadius * -0.156;
 					var augDaysAngleOffset = 360 / augDaysText.length;
 
-					var augDText = augCircle.selectAll(".augDaysText")
+					var augDText = augCircle.selectAll("#augDaysText")
 						.data(augDaysText)
 						.enter()
 						.append("text")
-						.attr("class", "augDaysText")
+						.attr("id", "augDaysText")
+						.attr("class", "monthDaysText")
 						.attr("x",0)
-						.attr("y",2)
-						.attr("transform", function(d,j) {return "rotate("+d*augDaysAngleOffset+")translate(0,"+augDaysTextRadius+") rotate("+(augDaysAngleOffset*-d)+")"})
-						.text(function(d) {return d})
-						.attr("text-anchor", "middle")
-						.attr("font-size", 3);
+						.attr("y",3)
+						.attr("transform", function(d,j) {return "rotate("+d*augDaysAngleOffset+")translate(0,"+monthDaysTextRadius+") rotate("+(augDaysAngleOffset*-d)+")"})
+						.text(function(d) {return d});
 
 
 					var augwk1arc = d3.svg.arc()
@@ -1174,13 +1167,12 @@ var svg = d3.select("#clock")
 						.data(sepDaysText)
 						.enter()
 						.append("text")
-						.attr("class", "sepDaysText")
+						.attr("id", "sepDaysText")
+						.attr("class", "monthDaysText")
 						.attr("x",0)
-						.attr("y",2)
-						.attr("transform", function(d,j) {return "rotate("+d*sepDaysAngleOffset+")translate(0,"+sepDaysTextRadius+") rotate("+(sepDaysAngleOffset*-d)+")"})
-						.text(function(d) {return d})
-						.attr("text-anchor", "middle")
-						.attr("font-size", 3);
+						.attr("y",3)
+						.attr("transform", function(d,j) {return "rotate("+d*sepDaysAngleOffset+")translate(0,"+monthDaysTextRadius+") rotate("+(sepDaysAngleOffset*-d)+")"})
+						.text(function(d) {return d});
 
 
 					var sepwk1arc = d3.svg.arc()
@@ -1284,17 +1276,16 @@ var svg = d3.select("#clock")
 					var octDaysTextRadius = yearRadius * -0.156;
 					var octDaysAngleOffset = 360 / octDaysText.length;
 
-					var octDText = octCircle.selectAll(".octDaysText")
+					var octDText = octCircle.selectAll("#octDaysText")
 						.data(octDaysText)
 						.enter()
 						.append("text")
-						.attr("class", "octDaysText")
+						.attr("id", "octDaysText")
+						.attr("class", "monthDaysText")
 						.attr("x",0)
-						.attr("y",2)
-						.attr("transform", function(d,j) {return "rotate("+d*octDaysAngleOffset+")translate(0,"+octDaysTextRadius+") rotate("+(octDaysAngleOffset*-d)+")"})
-						.text(function(d) {return d})
-						.attr("text-anchor", "middle")
-						.attr("font-size", 3);
+						.attr("y",3)
+						.attr("transform", function(d,j) {return "rotate("+d*octDaysAngleOffset+")translate(0,"+monthDaysTextRadius+") rotate("+(octDaysAngleOffset*-d)+")"})
+						.text(function(d) {return d});
 
 
 					var octwk1arc = d3.svg.arc()
@@ -1398,17 +1389,16 @@ var svg = d3.select("#clock")
 					var novDaysTextRadius = yearRadius * -0.156;
 					var novDaysAngleOffset = 360 / novDaysText.length;
 
-					var novDText = novCircle.selectAll(".novDaysText")
+					var novDText = novCircle.selectAll("#novDaysText")
 						.data(novDaysText)
 						.enter()
 						.append("text")
-						.attr("class", "novDaysText")
+						.attr("id", "novDaysText")
+						.attr("class", "monthDaysText")
 						.attr("x",0)
-						.attr("y",2)
-						.attr("transform", function(d,j) {return "rotate("+d*novDaysAngleOffset+")translate(0,"+novDaysTextRadius+") rotate("+(novDaysAngleOffset*-d)+")"})
-						.text(function(d) {return d})
-						.attr("text-anchor", "middle")
-						.attr("font-size", 3);
+						.attr("y",3)
+						.attr("transform", function(d,j) {return "rotate("+d*novDaysAngleOffset+")translate(0,"+monthDaysTextRadius+") rotate("+(novDaysAngleOffset*-d)+")"})
+						.text(function(d) {return d});
 
 
 					var novwk1arc = d3.svg.arc()
@@ -1553,17 +1543,16 @@ var svg = d3.select("#clock")
 					var decDaysTextRadius = yearRadius * -0.156;
 					var decDaysAngleOffset = 360 / decDaysText.length;
 
-					var decDText = decCircle.selectAll(".decDaysText")
+					var decDText = decCircle.selectAll("#decDaysText")
 						.data(decDaysText)
 						.enter()
 						.append("text")
-						.attr("class", "decDaysText")
+						.attr("id", "decDaysText")
+						.attr("class", "monthDaysText")
 						.attr("x",0)
-						.attr("y",2)
-						.attr("transform", function(d,j) {return "rotate("+d*decDaysAngleOffset+")translate(0,"+decDaysTextRadius+") rotate("+(decDaysAngleOffset*-d)+")"})
-						.text(function(d) {return d})
-						.attr("text-anchor", "middle")
-						.attr("font-size", 3);
+						.attr("y",3)
+						.attr("transform", function(d,j) {return "rotate("+d*decDaysAngleOffset+")translate(0,"+monthDaysTextRadius+") rotate("+(decDaysAngleOffset*-d)+")"})
+						.text(function(d) {return d});
 
 
 					var decwk1arc = d3.svg.arc()
@@ -2237,7 +2226,7 @@ var svg = d3.select("#clock")
 					var innerTimes = midCircle.append("g")
 					.attr("transform", "translate(0,-22)");
 
-					var timeYPos = 5, timeYSpacing = 17;
+					var timeYPos = 0, timeYSpacing = 21;
 
 					var dateDisplay = innerTimes.append("text")
 						.attr("id", "dateDisplay")
@@ -2307,6 +2296,8 @@ var svg = d3.select("#clock")
 
 		var buttonsField = document.getElementById("event_eventype");
 
+		var eventypeButtonsWidth = width/2, eventypeButtonsHeight = height*0.2;
+
 		var eventypeButtonsGroup = rootGroup.append("g")
 			.attr("width", width/2)
 			.attr("height", height*0.2);
@@ -2323,7 +2314,7 @@ var svg = d3.select("#clock")
 				else
 					return "typeButtons";
 			})
-			.attr("width", width*0.1)
+			.attr("width", eventypeButtonsWidth*0.2)
 			.attr("height", height*0.04)
 			.attr("x", function(d,i){return width/2+(i-1)*(width/9.1)-47})
 			.attr("y", height*0.87)
