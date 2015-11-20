@@ -1,5 +1,5 @@
 
-// schedule donut
+// schedule donut AKA index
 
 var width = window.innerWidth, height = window.innerHeight, radius = function() { if (window.innerWidth<window.innerHeight) return window.innerWidth/2.2; else return window.innerHeight/2.2;};
 

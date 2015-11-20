@@ -1,4 +1,4 @@
-//create event tool
+//create or edit event tool
 
 var width = window.innerHeight, height = window.innerHeight, radius = (window.innerHeight*0.55)/2;
 
@@ -51,6 +51,8 @@ var svg = d3.select("#clock")
 
 		var sunday2014wk1 = 16061;
 
+		var sunday2015wk1 = 16425;
+
 		var currentWkSunday;
 
 		var todayWkDay = now.getDay();
@@ -65,7 +67,7 @@ var svg = d3.select("#clock")
 
 		var dateForDisplay;
 
-		var eventDayWkDay = (eventDay - sunday2014wk1) % 7;
+		var eventDayWkDay = (eventDay - sunday2015wk1) % 7;
 
 		var dayField = document.getElementById("event_day");
 
@@ -85,13 +87,13 @@ var svg = d3.select("#clock")
 		
 		dayField.value =  eventDay;
 
-		var eventWk = Math.round((currentWkSunday-(sunday2014wk1-3))/7);
+		var eventWk = Math.round((currentWkSunday-(sunday2015wk1-3))/7);
 
 		assignWk(eventWk);
 			console.log(eventWk);
 
 		function assignWk(selectedWk) {
-			currentWkSunday = (selectedWk * 7) + sunday2014wk1;
+			currentWkSunday = (selectedWk * 7) + sunday2015wk1;
 		};
 
 		// jan circle
@@ -133,7 +135,7 @@ var svg = d3.select("#clock")
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
 						.startAngle((1/janDaysText.length)*radians)
-						.endAngle((3.8/janDaysText.length)*radians);
+						.endAngle((2.8/janDaysText.length)*radians);
 
 					var janwk1path = janCircle.append("path")
 						.attr("d", janwk1arc)
@@ -152,8 +154,8 @@ var svg = d3.select("#clock")
 					var janwk2arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((4/janDaysText.length)*radians)
-						.endAngle((10.8/janDaysText.length)*radians);
+						.startAngle((3/janDaysText.length)*radians)
+						.endAngle((9.8/janDaysText.length)*radians);
 
 					var janwk2path = janCircle.append("path")
 						.attr("d", janwk2arc)
@@ -172,8 +174,8 @@ var svg = d3.select("#clock")
 					var janwk3arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((11/janDaysText.length)*radians)
-						.endAngle((17.8/janDaysText.length)*radians);
+						.startAngle((10/janDaysText.length)*radians)
+						.endAngle((16.8/janDaysText.length)*radians);
 
 					var janwk3path = janCircle.append("path")
 						.attr("d", janwk3arc)
@@ -192,8 +194,8 @@ var svg = d3.select("#clock")
 					var janwk4arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((18/janDaysText.length)*radians)
-						.endAngle((24.8/janDaysText.length)*radians);
+						.startAngle((17/janDaysText.length)*radians)
+						.endAngle((23.8/janDaysText.length)*radians);
 
 					var janwk4path = janCircle.append("path")
 						.attr("d", janwk4arc)
@@ -212,8 +214,8 @@ var svg = d3.select("#clock")
 					var janwk5arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((25/janDaysText.length)*radians)
-						.endAngle((31.8/janDaysText.length)*radians);
+						.startAngle((24/janDaysText.length)*radians)
+						.endAngle((30.8/janDaysText.length)*radians);
 
 					var janwk5path = janCircle.append("path")
 						.attr("d", janwk5arc)
@@ -225,6 +227,26 @@ var svg = d3.select("#clock")
 						})
 						.on("click", function () {
 							assignWk(57);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
+
+					var janwk6arc = d3.svg.arc()
+						.outerRadius(monthWkArcOuterR)
+						.innerRadius(monthWkArcInnerR)
+						.startAngle((31/janDaysText.length)*radians)
+						.endAngle((31.8/janDaysText.length)*radians);
+
+					var janwk6path = janCircle.append("path")
+						.attr("d", janwk6arc)
+						.attr("class", function(){
+							if (eventWk == 58)
+								return "thisWeek";
+							else
+								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(58);
 							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
 							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
@@ -830,10 +852,15 @@ var svg = d3.select("#clock")
 					var junwk1path = junCircle.append("path")
 						.attr("d", junwk1arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 23)
 								return "thisWeek";
 							else
 								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(23);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
 
 					var junwk2arc = d3.svg.arc()
@@ -845,10 +872,15 @@ var svg = d3.select("#clock")
 					var junwk2path = junCircle.append("path")
 						.attr("d", junwk2arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 77)
 								return "thisWeek";
 							else
 								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(77);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
 
 					var junwk3arc = d3.svg.arc()
@@ -1292,76 +1324,101 @@ var svg = d3.select("#clock")
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
 						.startAngle((1/octDaysText.length)*radians)
-						.endAngle((4.8/octDaysText.length)*radians);
+						.endAngle((3.8/octDaysText.length)*radians);
 
 					var octwk1path = octCircle.append("path")
 						.attr("d", octwk1arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 40)
 								return "thisWeek";
 							else
 								return "weeks";
+						})
+						.on("click", function () {
+							assignWk(40);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
 						});
 
 					var octwk2arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((5/octDaysText.length)*radians)
-						.endAngle((11.8/octDaysText.length)*radians);
+						.startAngle((4/octDaysText.length)*radians)
+						.endAngle((10.8/octDaysText.length)*radians);
 
 					var octwk2path = octCircle.append("path")
 						.attr("d", octwk2arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 41)
 								return "thisWeek";
 							else
 								return "weeks";
 						})
+						.on("click", function () {
+							assignWk(41);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					var octwk3arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((12/octDaysText.length)*radians)
-						.endAngle((18.8/octDaysText.length)*radians);
+						.startAngle((11/octDaysText.length)*radians)
+						.endAngle((17.8/octDaysText.length)*radians);
 
 					var octwk3path = octCircle.append("path")
 						.attr("d", octwk3arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 42)
 								return "thisWeek";
 							else
 								return "weeks";
 						})
+						.on("click", function () {
+							assignWk(42);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					var octwk4arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((19/octDaysText.length)*radians)
-						.endAngle((25.8/octDaysText.length)*radians);
+						.startAngle((18/octDaysText.length)*radians)
+						.endAngle((24.8/octDaysText.length)*radians);
 
 					var octwk4path = octCircle.append("path")
 						.attr("d", octwk4arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 43)
 								return "thisWeek";
 							else
 								return "weeks";
 						})
+						.on("click", function () {
+							assignWk(43);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					var octwk5arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((26/octDaysText.length)*radians)
+						.startAngle((25/octDaysText.length)*radians)
 						.endAngle((31.8/octDaysText.length)*radians);
 
 					var octwk5path = octCircle.append("path")
 						.attr("d", octwk5arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 44)
 								return "thisWeek";
 							else
 								return "weeks";
 						})
+						.on("click", function () {
+							assignWk(44);
+							d3.select(".thisWeek").classed({'thisWeek': false, 'weeks': true});
+							d3.select(this).classed({'thisWeek': true, 'weeks': false});
+						});
 
 					
 		// nov circle
@@ -1401,32 +1458,16 @@ var svg = d3.select("#clock")
 						.text(function(d) {return d});
 
 
-					var novwk1arc = d3.svg.arc()
-						.outerRadius(monthWkArcOuterR)
-						.innerRadius(monthWkArcInnerR)
-						.startAngle((1/novDaysText.length)*radians)
-						.endAngle((1.8/novDaysText.length)*radians);
-
-					var novwk1path = novCircle.append("path")
-						.attr("d", novwk1arc)
-						.attr("class", function(){
-							if (eventWk == 55)
-								return "thisWeek";
-							else
-								return "weeks";
-						})
-						.on("click", function () {assignWk(44)});
-
 					var novwk2arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((2/novDaysText.length)*radians)
-						.endAngle((8.8/novDaysText.length)*radians);
+						.startAngle((1/novDaysText.length)*radians)
+						.endAngle((7.8/novDaysText.length)*radians);
 
 					var novwk2path = novCircle.append("path")
 						.attr("d", novwk2arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 45)
 								return "thisWeek";
 							else
 								return "weeks";
@@ -1440,13 +1481,13 @@ var svg = d3.select("#clock")
 					var novwk3arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((9/novDaysText.length)*radians)
-						.endAngle((15.8/novDaysText.length)*radians);
+						.startAngle((8/novDaysText.length)*radians)
+						.endAngle((14.8/novDaysText.length)*radians);
 
 					var novwk3path = novCircle.append("path")
 						.attr("d", novwk3arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 46)
 								return "thisWeek";
 							else
 								return "weeks";
@@ -1460,13 +1501,13 @@ var svg = d3.select("#clock")
 					var novwk4arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((16/novDaysText.length)*radians)
-						.endAngle((22.8/novDaysText.length)*radians);
+						.startAngle((15/novDaysText.length)*radians)
+						.endAngle((21.8/novDaysText.length)*radians);
 
 					var novwk4path = novCircle.append("path")
 						.attr("d", novwk4arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 47)
 								return "thisWeek";
 							else
 								return "weeks";
@@ -1480,13 +1521,13 @@ var svg = d3.select("#clock")
 					var novwk5arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((23/novDaysText.length)*radians)
-						.endAngle((29.8/novDaysText.length)*radians);
+						.startAngle((22/novDaysText.length)*radians)
+						.endAngle((28.8/novDaysText.length)*radians);
 
 					var novwk5path = novCircle.append("path")
 						.attr("d", novwk5arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 48)
 								return "thisWeek";
 							else
 								return "weeks";
@@ -1500,13 +1541,13 @@ var svg = d3.select("#clock")
 					var novwk6arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((30/novDaysText.length)*radians)
+						.startAngle((29/novDaysText.length)*radians)
 						.endAngle((30.8/novDaysText.length)*radians);
 
 					var novwk6path = novCircle.append("path")
 						.attr("d", novwk6arc)
 						.attr("class", function(){
-							if (eventWk == 55)
+							if (eventWk == 49)
 								return "thisWeek";
 							else
 								return "weeks";
@@ -1559,7 +1600,7 @@ var svg = d3.select("#clock")
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
 						.startAngle((1/decDaysText.length)*radians)
-						.endAngle((6.8/decDaysText.length)*radians);
+						.endAngle((5.8/decDaysText.length)*radians);
 
 					var decwk1path = decCircle.append("path")
 						.attr("d", decwk1arc)
@@ -1578,8 +1619,8 @@ var svg = d3.select("#clock")
 					var decwk2arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((7/decDaysText.length)*radians)
-						.endAngle((13.8/decDaysText.length)*radians);
+						.startAngle((6/decDaysText.length)*radians)
+						.endAngle((12.8/decDaysText.length)*radians);
 
 					var decwk2path = decCircle.append("path")
 						.attr("d", decwk2arc)
@@ -1598,8 +1639,8 @@ var svg = d3.select("#clock")
 					var decwk3arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((14/decDaysText.length)*radians)
-						.endAngle((20.8/decDaysText.length)*radians);
+						.startAngle((13/decDaysText.length)*radians)
+						.endAngle((19.8/decDaysText.length)*radians);
 
 					var decwk3path = decCircle.append("path")
 						.attr("d", decwk3arc)
@@ -1618,8 +1659,8 @@ var svg = d3.select("#clock")
 					var decwk4arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((21/decDaysText.length)*radians)
-						.endAngle((27.8/decDaysText.length)*radians);
+						.startAngle((20/decDaysText.length)*radians)
+						.endAngle((26.8/decDaysText.length)*radians);
 
 					var decwk4path = decCircle.append("path")
 						.attr("d", decwk4arc)
@@ -1638,7 +1679,7 @@ var svg = d3.select("#clock")
 					var decwk5arc = d3.svg.arc()
 						.outerRadius(monthWkArcOuterR)
 						.innerRadius(monthWkArcInnerR)
-						.startAngle((28/decDaysText.length)*radians)
+						.startAngle((27/decDaysText.length)*radians)
 						.endAngle((31.8/decDaysText.length)*radians);
 
 					var decwk5path = decCircle.append("path")
